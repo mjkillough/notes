@@ -71,7 +71,7 @@ Wants=plymouth-deactivate.service
 After=plymouth-deactivate.service
 ```
 
-(See [Auto-login to X](#Auto-login-to-X) for an example).
+(See [Auto-login to X](#auto-login-to-x) for an example).
 
 ## Debugging
 
@@ -127,7 +127,7 @@ WantedBy=graphical.target
 
 Note:
 - X runs as root, rather than the user.
-- As discussed in [Transition from Plymouth to X](#Transition-from-Plymouth-to-X):
+- As discussed in [Transition from Plymouth to X](#transition-from-plymouth-to-x):
     - We force these services to come after `plymouth-deactivate.service` but before `plymouth-quit.service`.
     - We specify `-background none`.
 - We might be able to use automatic login to a virtual console[7] and `startx`, but this might introduce a flicker when transitioning from Plymouth. Not tested.
@@ -136,7 +136,7 @@ Note:
 
 It's quite nice that OS X has a smooth transition from the boot splash to the desktop wallpaper. We can achieve this by mimicing what GDM does in [4].
 
-Basically, follow [Transition from Plymouth to X](#Transition-from-Plymouth-to-X) and have a script scrape the contents of the root window and explicitly set them as the background of the root window. From there, set the background, ideally with a tool that allows fading in from the previous background.
+Basically, follow [Transition from Plymouth to X](#transition-from-plymouth-to-x) and have a script scrape the contents of the root window and explicitly set them as the background of the root window. From there, set the background, ideally with a tool that allows fading in from the previous background.
 
 # References
 
