@@ -138,6 +138,13 @@ It's quite nice that OS X has a smooth transition from the boot splash to the de
 
 Basically, follow [Transition from Plymouth to X](#transition-from-plymouth-to-x) and have a script scrape the contents of the root window and explicitly set them as the background of the root window. From there, set the background, ideally with a tool that allows fading in from the previous background.
 
+[set-wallpaper](https://github.com/mjkillough/set-wallpaper/) is a script which does this. Add this to your `.xinitrc` or equivalent to get a smooth transition:
+
+```
+set-wallpaper --copy-root-window
+set-wallpaper --image path-to-image --fade-secs 2
+```
+
 # References
 
 - [0] https://wiki.archlinux.org/index.php/Silent_boot
