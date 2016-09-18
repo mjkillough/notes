@@ -48,20 +48,6 @@ In order to have a seamless transition to X you need to[3][4]:
 - Start X (ideally with `-background none` - previously known as `-nr`)
 - Run `plymouth quit`
 
-To do this, create and enable `/etc/systemd/system/plymouth-deactivate.service`:
-
-```
-[Unit]
-Description=Deactivate Plymouth Boot Screen
-After=rc-local.service plymouth-start.service systemd-user-sessions.service
-Before=getty@tty1.service
-
-[Service]
-ExecStart=-/usr/bin/plymouth deactivate
-Type=oneshot
-TimeoutSec=20
-```
-
 Ensure that `plymouth-quit` is not run until after X has started. (Be aware that the various `displaymanager-plymouth.service` scripts on ArchLinux have `After=plymouth-quit.service`).
 
 You should add the following to whichever service starts X (usually your DM):
