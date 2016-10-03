@@ -25,3 +25,18 @@ ACTION=="change", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/mj
 The internet suggests sleeping, but also warns that sleeping in a `udev` trigger blocks other `udev` events from firing and this is bad. They suggest more complex solutions (like triggering a `systemd` service), but it isn't clear that these make it much simpler to wait for `xrandr` to get itself sorted, without resorting to sleeps.
 
 (When I tried adding a simple sleep of 3 seconds, it didn't seem to help).
+
+## qtile
+
+Something like:
+
+```python
+screens = [
+    Screen() # whatever you'd normally do
+    for _ in range(2)
+]
+
+@libqtile.hook.subscribe.screen_change
+def restart_on_randr(qtile, ev):
+    qtile.cmd_restart()
+```
